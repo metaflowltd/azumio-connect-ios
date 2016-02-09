@@ -1,7 +1,9 @@
 # azumio-connect-ios
-Unofficial Azumion Connect - Enables heart rate measurements in your app. see http://developer.azumio.com/ios/azumio-connect
+Unofficial Azumion Connect for Swift - Enables heart rate measurements in your app. see http://developer.azumio.com/ios/azumio-connect
 
 ## Usage:
+Add app url scheme (`CFBundleURLTypes`) to your app info.plist - I recommend using value in the bundle identiefier (`$(PRODUCT_BUNDLE_IDENTIFIER)`) 
+
 In your app delegate:
 ```swift
 func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
