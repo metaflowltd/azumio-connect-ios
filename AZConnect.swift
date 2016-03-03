@@ -20,9 +20,9 @@ class AZConnect: NSObject {
     
     func measureHeartRate(){
         let urlPro = NSURL(string: "instantheartrate.pro:?callback=\(schema!):?heartrate=!HR!")
-        let urlFree = NSURL(string: "instantheartrate://si.modula.instantheartrate.free:?callback=\(schema!):?heartrate=!HR!")
-    
+        let urlFree = NSURL(string: "instantheartrate:?callback=\(schema!):?heartrate=!HR!")
         let urlNoApp = NSURL(string: "https://itunes.apple.com/app/instant-heart-rate-heart-rate/id409625068?mt=8#")
+        
         let app = UIApplication.sharedApplication()
         if (app.canOpenURL(urlPro!)){
             app.openURL(urlPro!)
