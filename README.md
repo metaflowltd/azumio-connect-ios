@@ -16,8 +16,6 @@ Allow your app to use canOpenUrl for the following schemes by adding `LSApplicat
 ```
 instantheartrate
 instantheartrate.pro
-si.modula.instantheartrate.free
-si.modula.instantheartrate.pro
 ```
 
 Then when you want to measure heart rate:
