@@ -34,7 +34,7 @@ class AZConnect: NSObject {
     }
     
     func openURL(url:NSURL){
-        let query = NSString(string: url.absoluteString)
+        let query = NSString(string: url.absoluteString!)
         var r = query.rangeOfString("heartrate=")
         if (r.location == NSNotFound){
             self.callbackBlock!(heartRate: 0,NSError(domain: "No heart rate", code: 0, userInfo: nil))
@@ -44,7 +44,7 @@ class AZConnect: NSObject {
         r.length = 0
         
         while (r.location + r.length < query.length && isCharADigit(Character(UnicodeScalar(query.characterAtIndex(NSMaxRange(r)))))){
-            r.length++
+            r.length += 1
         }
         let hr = query.substringWithRange(r)
         let hrd = Double(hr)
