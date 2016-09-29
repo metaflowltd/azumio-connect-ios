@@ -14,6 +14,12 @@ class AZConnect: NSObject {
     var callbackBlock:( (heartRate:Double, NSError?) -> () )?
     var schema:String?
     
+    class func isAZConnectURL(url:NSURL) -> Bool{
+        let query = NSString(string: url.absoluteString!)
+        let r = query.rangeOfString(":?heartrate=")
+        return  r.location != NSNotFound
+    }
+    
     func isCharADigit(c:Character) -> Bool{
         return "0"..."9" ~= c
     }
@@ -37,7 +43,9 @@ class AZConnect: NSObject {
         let query = NSString(string: url.absoluteString!)
         var r = query.rangeOfString("heartrate=")
         if (r.location == NSNotFound){
-            self.callbackBlock!(heartRate: 0,NSError(domain: "No heart rate", code: 0, userInfo: nil))
+            if self.callbackBlock != nil{
+                self.callbackBlock!(heartRate: 0,NSError(domain: "No heart rate", code: 0, userInfo: nil))
+            }
             return
         }
         r.location = r.location + 10
